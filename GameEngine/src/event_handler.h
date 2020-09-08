@@ -23,20 +23,21 @@ namespace Engine
     private:
         sf::Event current_event_;
         std::shared_ptr<sf::RenderWindow> render_window_;
-        CustomCursor custom_cursor_;
-        Grid grid_;
+        std::shared_ptr<CustomCursor> custom_cursor_;
+        std::shared_ptr<Grid> grid_;
         Camera camera_;
         std::map<sf::Event::EventType, std::function<void()>> event_callbacks_;
     	
     private:
         static void handle_keyboard_events(const sf::Event &event, sf::RenderWindow &render_window, Grid &grid);
         void on_mouse_click();
-        void on_key_pressed();
+        void on_key_pressed() const;
         void on_window_close() const;
 	
 
     public:
-        EventHandler(const std::shared_ptr<sf::RenderWindow> &render_window, const CustomCursor& custom_cursor, const Grid& grid, const Camera& camera) noexcept;
+        EventHandler(const std::shared_ptr<sf::RenderWindow> &render_window, const std::shared_ptr<CustomCursor>& custom_cursor,
+					 const std::shared_ptr<Grid>& grid, const Camera& camera) noexcept;
         EventHandler(const EventHandler &other) = delete;
         EventHandler operator=(const EventHandler& other) = delete;
         EventHandler(const EventHandler&& other) = delete;

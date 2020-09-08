@@ -35,10 +35,10 @@ namespace Engine
             // draw stuff
             render_window_->clear(sf::Color(39, 39, 39));
 
-            grid_.split();
-            grid_.draw_cells();
+            grid_->split();
+            grid_->draw_cells();
             DrawTextureTools();
-            custom_cursor.draw(*render_window_);
+            custom_cursor->draw(*render_window_);
 
             ImGui::SFML::Render(*render_window_);
             render_window_->display();
@@ -62,7 +62,7 @@ namespace Engine
             ImGui::BeginChild("Tiles");
             if (ImGui::ImageButton(tile_sprite))
             {
-                custom_cursor.attach_sprite(tile_sprite);
+                custom_cursor->attach_sprite(tile_sprite);
             }
 
             // ImGui::SameLine();
