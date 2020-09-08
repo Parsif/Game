@@ -45,12 +45,12 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(SolutionDir)GameEngine\bin\$(Configuration)-$(Platform)\</OutDir>
-    <IntDir>$(Platform)GameEngine\bin-int\$(Configuration)-$(Platform)\</IntDir>
+    <IntDir>$(SolutionDir)GameEngine\bin-int\$(Configuration)-$(Platform)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(SolutionDir)GameEngine\bin\$(Configuration)-$(Platform)\</OutDir>
-    <IntDir>$(Platform)GameEngine\bin-int\$(Configuration)-$(Platform)\</IntDir>
+    <IntDir>$(SolutionDir)GameEngine\bin-int\$(Configuration)-$(Platform)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -89,6 +89,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\renderer.cpp" />
     <ClCompile Include="src\Camera.cpp" />
     <ClCompile Include="src\application.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Use</PrecompiledHeader>
@@ -146,6 +147,7 @@
     <ClCompile Include="vendor\ImguiSfml\misc\cpp\imgui_stdlib.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\renderer.h" />
     <ClInclude Include="src\camera.h" />
     <ClInclude Include="src\application.h" />
     <ClInclude Include="src\cell.h" />

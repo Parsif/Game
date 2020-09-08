@@ -29,7 +29,6 @@ namespace Engine
         std::map<sf::Event::EventType, std::function<void()>> event_callbacks_;
     	
     private:
-        static void handle_keyboard_events(const sf::Event &event, sf::RenderWindow &render_window, Grid &grid);
         void on_mouse_click();
         void on_key_pressed() const;
         void on_window_close() const;
