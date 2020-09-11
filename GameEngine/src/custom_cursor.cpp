@@ -1,7 +1,3 @@
-//
-// Created by Vlad on 8/28/2020.
-//
-
 #include "pch.h"
 
 #include "custom_cursor.h"

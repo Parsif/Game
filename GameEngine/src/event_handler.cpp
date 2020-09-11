@@ -1,7 +1,3 @@
-//
-// Created by Vlad on 8/30/2020.
-//
-
 #include "pch.h"
 
 #include "event_handler.h"
@@ -19,6 +15,9 @@ namespace Engine
         event_callbacks_[sf::Event::Closed] = [this]() { this->on_window_close(); };
         event_callbacks_[sf::Event::KeyPressed] = [this]() { this->on_key_pressed(); };
         event_callbacks_[sf::Event::MouseButtonPressed] = [this]() { this->on_mouse_click(); };
+        event_callbacks_[sf::Event::Resized] = [this]() { this->on_window_resize(); };
+        event_callbacks_[sf::Event::MouseWheelScrolled] = [this]() { this->on_mouse_scroll(); };
+
 	}
 
 	void EventHandler::on_event(const sf::Event &event)
@@ -37,7 +36,7 @@ namespace Engine
 		// grid is a local copy instead of a reference to application grid
         if (custom_cursor_->is_sprite_attached())
         {
-            grid_->on_click(custom_cursor_->get_attached_sprite());
+            grid_->on_mouse_click(custom_cursor_->get_attached_sprite());
         }
 
         custom_cursor_->detach_sprite();
@@ -77,5 +76,15 @@ namespace Engine
 	void EventHandler::on_window_close() const
 	{
         render_window_->close();
+	}
+
+	void EventHandler::on_window_resize()
+	{
+        std::cout << "Resized" << '\n';
+	}
+
+	void EventHandler::on_mouse_scroll()
+	{
+        grid_->on_mouse_scroll(current_event_.mouseWheelScroll.delta);
 	}
 }

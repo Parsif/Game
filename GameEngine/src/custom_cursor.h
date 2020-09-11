@@ -1,9 +1,4 @@
-//
-// Created by Vlad on 8/28/2020.
-//
-
-#ifndef MAPEDITOR_CUSTOM_CURSOR_H
-#define MAPEDITOR_CUSTOM_CURSOR_H
+#pragma once
 
 #include <SFML/Graphics.hpp>
 
@@ -28,4 +23,3 @@ namespace Engine
         return attached_sprite_.getTexture() != nullptr;
     }
 }
-#endif //MAPEDITOR_CUSTOM_CURSOR_H

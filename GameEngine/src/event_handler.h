@@ -1,14 +1,7 @@
-//
-// Created by Vlad on 8/30/2020.
-//
-
-#ifndef MAPEDITOR_EVENT_HANDLER_H
-#define MAPEDITOR_EVENT_HANDLER_H
-
+#pragma once
 #include "pch.h"
 
 #include <functional>
-#include <SFML/Graphics.hpp>
 #include <SFML/Window/Event.hpp>
 
 
@@ -32,6 +25,8 @@ namespace Engine
         void on_mouse_click();
         void on_key_pressed() const;
         void on_window_close() const;
+        void on_window_resize();
+        void on_mouse_scroll();
 	
 
     public:
@@ -49,5 +44,3 @@ namespace Engine
 
    
 }
-
-#endif //MAPEDITOR_EVENT_HANDLER_H

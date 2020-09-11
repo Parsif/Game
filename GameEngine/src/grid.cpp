@@ -1,13 +1,11 @@
-//
-// Created by Vlad on 8/28/2020.
-//
-
 #include "pch.h"
 
 #include "grid.h"
 
 namespace Engine
 {
+	
+
     Grid::Grid(const std::shared_ptr<sf::RenderWindow> &render_window, unsigned int cell_size) : render_window_(render_window) ,cell_size_(cell_size) // NOLINT(modernize-pass-by-value)
     {
         const auto[window_width, window_height] = render_window_->getSize();
@@ -25,6 +23,12 @@ namespace Engine
         }
     }
 
+    void Grid::set_cell_size(unsigned cell_size)
+    {
+    	cell_size_ = cell_size;
+	    for (auto && cell : cells_) cell.set_size(cell_size);
+    }
+	
     void Grid::split() const
     {
         const auto[window_width, window_height] = render_window_->getSize();
@@ -63,11 +67,11 @@ namespace Engine
     {
         for (auto &cell : cells_)
         {
-            cell.draw(render_window_);
+            cell.draw(render_window_, cell_scale_x, cell_scale_y);
         }
     }
 
-    void Grid::on_click(const sf::Sprite &selected_sprite)
+    void Grid::on_mouse_click(const sf::Sprite &selected_sprite)
     {
         for (auto &cell : cells_)
         {
@@ -89,6 +93,7 @@ namespace Engine
         const float top_boundary = view_center_y - (window_height / 2.f);
         const float bottom_boundary = view_center_y + (window_height / 2.f);
 
+    	
         // TODO: Handle memory consumption
 
         if (leftmost_x_ > left_boundary || rightmost_x_  < right_boundary ||
@@ -113,5 +118,28 @@ namespace Engine
         }
     }
 
+    void Grid::on_window_resize()
+    {
+    	
+    }
+
+    void Grid::on_mouse_scroll(const float scroll_delta)
+    {
+        const float scale_size = 0.1f; 
+	    if (scroll_delta == 1.f)
+	    {
+            cell_scale_x += scale_size;
+            cell_scale_y += scale_size;
+            set_cell_size(cell_size_ + cell_size_ * scale_size);
+	    }
+   
+		else
+		{
+            cell_scale_x -= scale_size;
+            cell_scale_y -= scale_size;
+            set_cell_size(cell_size_ - cell_size_ * scale_size);
+
+		}
+    }
 }
 

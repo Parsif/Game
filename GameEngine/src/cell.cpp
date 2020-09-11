@@ -1,8 +1,5 @@
-//
-// Created by Vlad on 8/28/2020.
-//
-
 #include "pch.h"
+
 #include "cell.h"
 
 namespace Engine
@@ -12,10 +9,11 @@ namespace Engine
     {
     }
 
-    void Cell::draw(std::shared_ptr<sf::RenderWindow> &renderWindow)
+    void Cell::draw(std::shared_ptr<sf::RenderWindow> &renderWindow, float scale_x, float scale_y)
     {
         if (attached_sprite.getTexture() != nullptr)
         {
+            attached_sprite.setScale(scale_x, scale_y);
             attached_sprite.setPosition(x_, y_);
             renderWindow->draw(attached_sprite);
         }
@@ -38,6 +36,11 @@ namespace Engine
 
         return mouse_pos_x >= x_ && mouse_pos_x <= x_ + static_cast<int>(size_) &&
                mouse_pos_y >= y_ && mouse_pos_y <= y_ + static_cast<int>(size_);
+    }
+
+    void Cell::set_size(unsigned int size)
+    {
+        size_ = size;
     }
 }
 

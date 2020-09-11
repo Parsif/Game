@@ -1,7 +1,3 @@
-//
-// Created by Vlad on 9/3/2020.
-//
-
 #include <iostream>
 
 #include <memory>

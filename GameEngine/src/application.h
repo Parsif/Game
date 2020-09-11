@@ -1,9 +1,4 @@
-//
-// Created by Владислав on 28.08.2020.
-//
-
-#ifndef MAPEDITOR_APPLICATION_H
-#define MAPEDITOR_APPLICATION_H
+#pragma once
 
 #include "pch.h"
 
@@ -18,7 +13,7 @@ namespace Engine
     class Application
     {
     private:
-        std::shared_ptr<sf::RenderWindow> render_window_ = std::make_shared<sf::RenderWindow>(sf::VideoMode(768, 512), "MapEditor");
+        std::shared_ptr<sf::RenderWindow> render_window_ = std::make_shared<sf::RenderWindow>(sf::VideoMode(768, 512), "MapEditor", sf::Style::Default);
         sf::View view_{sf::Vector2f(render_window_->getSize().x / 2.f, render_window_->getSize().y / 2.f),
                        sf::Vector2f(render_window_->getSize().x, render_window_->getSize().y)};
         std::shared_ptr<ResourceManager> resource_manager_ = std::make_shared<ResourceManager>();
@@ -41,4 +36,3 @@ namespace Engine
 }
 
 
-#endif //MAPEDITOR_APPLICATION_H

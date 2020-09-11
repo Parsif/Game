@@ -14,7 +14,7 @@ namespace Engine
 		std::shared_ptr<ResourceManager> resource_manager_;
 	private:
 		void render_imgui();
-		void render_other();
+		void render_other() const;
 	public:
 		Renderer(const std::shared_ptr<sf::RenderWindow>& render_window, const std::shared_ptr<CustomCursor>& custom_cursor,
 			const std::shared_ptr<Grid>& grid, std::shared_ptr<ResourceManager> resource_manager);

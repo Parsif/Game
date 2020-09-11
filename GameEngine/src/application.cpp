@@ -1,11 +1,7 @@
-//
-// Created by Владислав on 28.08.2020.
-//
-
 #include "pch.h"
+
 #include "application.h"
 
-#include "imgui.h"
 #include "imgui-SFML.h"
 
 #include "event_handler.h"

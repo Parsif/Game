@@ -1,12 +1,18 @@
 #include "renderer.h"
 
-
 #include "imgui-SFML.h"
 #include "imgui.h"
+
 #include "SFML/Window/Mouse.hpp"
 
 namespace Engine
 {
+    Renderer::Renderer(const std::shared_ptr<sf::RenderWindow>& render_window,
+        const std::shared_ptr<CustomCursor>& custom_cursor, const std::shared_ptr<Grid>& grid, std::shared_ptr<ResourceManager> resource_manager) :
+        render_window_(render_window), custom_cursor_(custom_cursor), grid_(grid), resource_manager_(resource_manager)
+    {
+    }
+
 	void Renderer::render_imgui()
 	{
         bool my_tool_active;
@@ -35,19 +41,14 @@ namespace Engine
         ImGui::SFML::Render(*render_window_);
 	}
 
-	void Renderer::render_other()
+	void Renderer::render_other() const
 	{
         grid_->split();
         grid_->draw_cells();
         custom_cursor_->draw(*render_window_);
 	}
 
-	Renderer::Renderer(const std::shared_ptr<sf::RenderWindow>& render_window,
-		const std::shared_ptr<CustomCursor>& custom_cursor, const std::shared_ptr<Grid>& grid, std::shared_ptr<ResourceManager> resource_manager) :
-		render_window_(render_window), custom_cursor_(custom_cursor), grid_(grid), resource_manager_(resource_manager)
-	{
-	}
-
+	
 	void Renderer::render()
 	{
 

@@ -1,15 +1,8 @@
-//
-// Created by Vlad on 8/28/2020.
-//
-
-#ifndef MAPEDITOR_RESOURCE_MANAGER_H
-#define MAPEDITOR_RESOURCE_MANAGER_H
+#pragma once
 
 #include "pch.h"
 
 #include <SFML/Graphics.hpp>
-
-#include "cell.h"
 
 namespace Engine
 {
@@ -28,4 +21,3 @@ namespace Engine
 
 }
 
-#endif //MAPEDITOR_RESOURCE_MANAGER_H
