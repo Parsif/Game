@@ -4,8 +4,7 @@
 
 namespace Engine
 {
-    Cell::Cell(int x, int y, unsigned int size, const sf::Sprite &sprite) noexcept : x_(x), y_(y), size_(size),
-                                                                                     attached_sprite(sprite)
+    Cell::Cell(int x, int y, unsigned int size) noexcept : x_(x), y_(y), size_(size)
     {
     }
 
@@ -19,14 +18,16 @@ namespace Engine
         }
     }
 
-    void Cell::attach_sprite(const sf::Sprite &sprite)
+    void Cell::attach_sprite(const SpriteWrapper& sprite_wrapper)
     {
-        attached_sprite = sprite;
+        sprite_wrapper_ = sprite_wrapper;
+        attached_sprite = sprite_wrapper_.get_sprite();
     }
 
     void Cell::detach_sprite()
     {
         attached_sprite = sf::Sprite{};
+        texture_filepath_ = "";
     }
 
     bool Cell::is_mouse_over(const std::shared_ptr<sf::RenderWindow> &render_window) const
@@ -36,6 +37,11 @@ namespace Engine
 
         return mouse_pos_x >= x_ && mouse_pos_x <= x_ + static_cast<int>(size_) &&
                mouse_pos_y >= y_ && mouse_pos_y <= y_ + static_cast<int>(size_);
+    }
+
+    bool Cell::is_empty() const
+    {
+        return attached_sprite.getTexture() == nullptr;
     }
 
     void Cell::set_size(unsigned int size)

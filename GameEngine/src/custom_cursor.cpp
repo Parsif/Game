@@ -5,29 +5,27 @@
 
 namespace Engine
 {
-    void CustomCursor::draw(sf::RenderWindow &render_window)
+    void CustomCursor::draw(sf::RenderWindow &render_window) const
     {
-        if (attached_sprite_.getTexture() != nullptr)
+        if (attached_sprite_wrapper_.get_sprite().getTexture() != nullptr)
         {
             const auto [mouse_pos_x, mouse_pos_y] = render_window.mapPixelToCoords(sf::Mouse::getPosition(render_window));
-            attached_sprite_.setPosition(mouse_pos_x, mouse_pos_y);
-            render_window.draw(attached_sprite_);
+            auto attached_sprite = attached_sprite_wrapper_.get_sprite();
+            attached_sprite.setPosition(mouse_pos_x, mouse_pos_y);
+            render_window.draw(attached_sprite);
         }
 
     }
 
-    void CustomCursor::attach_sprite(const sf::Sprite &sprite)
+    void CustomCursor::attach_sprite(const SpriteWrapper& sprite_wrapper)
     {
-        attached_sprite_ = sprite;
+        attached_sprite_wrapper_ = sprite_wrapper;
     }
 
     void CustomCursor::detach_sprite()
     {
-        attached_sprite_ = sf::Sprite{};
+        attached_sprite_wrapper_ = SpriteWrapper{};
     }
 
-    const sf::Sprite &CustomCursor::get_attached_sprite() const
-    {
-        return attached_sprite_;
-    }
+ 
 }

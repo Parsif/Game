@@ -4,7 +4,6 @@
 
 namespace Engine
 {
-	
 
     Grid::Grid(const std::shared_ptr<sf::RenderWindow> &render_window, unsigned int cell_size) : render_window_(render_window) ,cell_size_(cell_size) // NOLINT(modernize-pass-by-value)
     {
@@ -71,13 +70,13 @@ namespace Engine
         }
     }
 
-    void Grid::on_mouse_click(const sf::Sprite &selected_sprite)
+    void Grid::on_mouse_click(const SpriteWrapper &selected_sprite_wrapper)
     {
         for (auto &cell : cells_)
         {
             if (cell.is_mouse_over(render_window_))
             {
-                cell.attach_sprite(selected_sprite);
+                cell.attach_sprite(selected_sprite_wrapper);
                 break;
             }
         }
@@ -138,8 +137,9 @@ namespace Engine
             cell_scale_x -= scale_size;
             cell_scale_y -= scale_size;
             set_cell_size(cell_size_ - cell_size_ * scale_size);
-
 		}
     }
+
+  
 }
 

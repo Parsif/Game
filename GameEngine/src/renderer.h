@@ -13,7 +13,7 @@ namespace Engine
 		std::shared_ptr<Grid> grid_;
 		std::shared_ptr<ResourceManager> resource_manager_;
 	private:
-		void render_imgui();
+		void render_imgui() const;
 		void render_other() const;
 	public:
 		Renderer(const std::shared_ptr<sf::RenderWindow>& render_window, const std::shared_ptr<CustomCursor>& custom_cursor,
@@ -24,7 +24,7 @@ namespace Engine
 		Renderer operator=(const Renderer&& other) = delete;
 		~Renderer() = default;
 		
-		void render();
+		void render() const;
 	};
 }
 

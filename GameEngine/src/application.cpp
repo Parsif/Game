@@ -2,6 +2,8 @@
 
 #include "application.h"
 
+
+#include "data_export_manager.h"
 #include "imgui-SFML.h"
 
 #include "event_handler.h"
@@ -25,10 +27,10 @@ namespace Engine
             {
                 event_handler_.on_event(event);
             }
-
             ImGui::SFML::Update(*render_window_, delta_clock.restart());
             renderer_.render();
         }
+        DataExportManager::export_grid_data(grid_->get_cells());
     }
 
 

@@ -5,7 +5,6 @@
 #include "cell.h"
 
 
-
 namespace Engine
 {
     class Grid
@@ -27,13 +26,23 @@ namespace Engine
 
         void split() const;
         void draw_cells();
-        void on_mouse_click(const sf::Sprite &selected_sprite);
+        void on_mouse_click(const SpriteWrapper& selected_sprite_wrapper);
         void on_camera_move();
         void on_window_resize();
         void on_mouse_scroll(float scroll_delta);
 
+        [[nodiscard]] inline auto get_cell_size() const { return cell_size_;}
+    	// TODO: fix copying of cells
+        [[nodiscard]] inline const auto get_cells() const
+        {
+            std::vector<Cell> texture_cells;
+            for (const auto& cell : cells_)
+            {
+	            if (!cell.is_empty()) texture_cells.push_back(cell);
+            }
+	        return texture_cells;
+        }
 
-        [[nodiscard]] inline unsigned int get_cell_size() const { return cell_size_;};
     };
 
 }

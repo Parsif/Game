@@ -31,12 +31,11 @@ namespace Engine
 	}
 
 
-    void EventHandler::on_mouse_click()
+    void EventHandler::on_mouse_click() const
     {
-		// grid is a local copy instead of a reference to application grid
         if (custom_cursor_->is_sprite_attached())
         {
-            grid_->on_mouse_click(custom_cursor_->get_attached_sprite());
+            grid_->on_mouse_click(custom_cursor_->get_attached_sprite_wrapper());
         }
 
         custom_cursor_->detach_sprite();
@@ -83,7 +82,7 @@ namespace Engine
         std::cout << "Resized" << '\n';
 	}
 
-	void EventHandler::on_mouse_scroll()
+	void EventHandler::on_mouse_scroll() const
 	{
         grid_->on_mouse_scroll(current_event_.mouseWheelScroll.delta);
 	}

@@ -22,11 +22,11 @@ namespace Engine
         std::map<sf::Event::EventType, std::function<void()>> event_callbacks_;
     	
     private:
-        void on_mouse_click();
+        void on_mouse_click() const;
         void on_key_pressed() const;
         void on_window_close() const;
         void on_window_resize();
-        void on_mouse_scroll();
+        void on_mouse_scroll() const;
 	
 
     public:

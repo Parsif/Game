@@ -4,6 +4,8 @@
 
 #include <SFML/Graphics.hpp>
 
+#include "sprite_wrapper.h"
+
 namespace Engine
 {
     class ResourceManager
@@ -11,12 +13,13 @@ namespace Engine
     private:
         std::array<sf::Texture, 10> tile_textures_;
         std::array<sf::Sprite, 10> tile_sprites;
+        std::array<SpriteWrapper, 10> tile_sprite_wrappers_;
     public:
-        ResourceManager() noexcept;
+        ResourceManager();
 
     public:
-        [[nodiscard]] inline const auto& get_sprites() const { return tile_sprites; };
-        [[nodiscard]] inline unsigned int get_tile_size() const { return tile_textures_[0].getSize().x; };
+        [[nodiscard]] inline const auto& get_sprite_wrappers() const noexcept { return tile_sprite_wrappers_; }
+        [[nodiscard]] inline unsigned int get_tile_size() const noexcept { return tile_textures_[0].getSize().x; }
     };
 
 }

@@ -13,7 +13,7 @@ namespace Engine
     {
     }
 
-	void Renderer::render_imgui()
+	void Renderer::render_imgui() const
 	{
         bool my_tool_active;
         ImGui::Begin("Editing tool", &my_tool_active);
@@ -24,10 +24,10 @@ namespace Engine
         ImGui::TextColored(ImVec4(1, 1, 1, 1), "(%.0f ,%.0f)", mouse_pos_x, mouse_pos_y);
 
 
-        for (const auto& tile_sprite : resource_manager_->get_sprites())
+        for (const auto& tile_sprite : resource_manager_->get_sprite_wrappers())
         {
             ImGui::BeginChild("Tiles");
-            if (ImGui::ImageButton(tile_sprite))
+            if (ImGui::ImageButton(tile_sprite.get_sprite()))
             {
                 custom_cursor_->attach_sprite(tile_sprite);
             }
@@ -49,13 +49,11 @@ namespace Engine
 	}
 
 	
-	void Renderer::render()
+	void Renderer::render() const
 	{
-
         render_window_->clear(sf::Color(39, 39, 39));
         render_other();
         render_imgui();
         render_window_->display();
-
 	}
 }
