@@ -4,17 +4,17 @@
 
 namespace Engine
 {
-    Cell::Cell(int x, int y, unsigned int size) noexcept : x_(x), y_(y), size_(size)
+    Cell::Cell(int x, int y, unsigned int size) noexcept :  x_(x), y_(y), size_(size)
     {
     }
 
-    void Cell::draw(std::shared_ptr<sf::RenderWindow> &renderWindow, float scale_x, float scale_y)
+    void Cell::draw(const std::shared_ptr<sf::RenderWindow>& render_window, float scale_x, float scale_y)
     {
         if (attached_sprite.getTexture() != nullptr)
         {
             attached_sprite.setScale(scale_x, scale_y);
             attached_sprite.setPosition(x_, y_);
-            renderWindow->draw(attached_sprite);
+            render_window->draw(attached_sprite);
         }
     }
 

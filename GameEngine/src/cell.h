@@ -18,7 +18,7 @@ namespace Engine
     public:
         Cell(int x, int y, unsigned int size) noexcept;
 
-        void draw(std::shared_ptr<sf::RenderWindow> &renderWindow, float scale_x, float scale_y);
+        void draw(const std::shared_ptr<sf::RenderWindow>& render_window, float scale_x, float scale_y);
         void attach_sprite(const SpriteWrapper& sprite_wrapper);
         void detach_sprite();
         bool is_mouse_over(const std::shared_ptr<sf::RenderWindow> &render_window) const;

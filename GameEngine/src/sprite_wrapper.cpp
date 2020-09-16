@@ -1,3 +1,5 @@
+#include "pch.h"
+
 #include "sprite_wrapper.h"
 
 namespace Engine

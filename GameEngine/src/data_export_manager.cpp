@@ -23,7 +23,6 @@ namespace Engine
 
 		std::ofstream o_stream("grid.json");
 		o_stream << json << std::endl;
-		std::cout << json << '\n';
 	}
 
 	

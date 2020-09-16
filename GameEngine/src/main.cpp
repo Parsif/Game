@@ -5,7 +5,7 @@
 int main(int argc, char **argv)
 {
     Engine::Application application;
-    application.Run();
+    application.run();
 }
 
 

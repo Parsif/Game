@@ -2,22 +2,22 @@
 
 #include "application.h"
 
-
-#include "data_export_manager.h"
 #include "imgui-SFML.h"
 
 #include "event_handler.h"
+#include "data_export_manager.h"
 
 namespace Engine
 {
     Application::Application()
     {
+        resource_manager_->load_cell_tiles();
         render_window_->setFramerateLimit(60);
         ImGui::SFML::Init(*render_window_);
         render_window_->setView(view_); 
     }
 
-    void Application::Run()
+    void Application::run()
     {
         sf::Clock delta_clock;
         while (render_window_->isOpen())

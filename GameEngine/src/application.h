@@ -13,7 +13,7 @@ namespace Engine
     class Application
     {
     private:
-        std::shared_ptr<sf::RenderWindow> render_window_ = std::make_shared<sf::RenderWindow>(sf::VideoMode(768, 512), "MapEditor", sf::Style::Default);
+        std::shared_ptr<sf::RenderWindow> render_window_ = std::make_shared<sf::RenderWindow>(sf::VideoMode(768, 512), "GameEngine", sf::Style::Default);
         sf::View view_{sf::Vector2f(render_window_->getSize().x / 2.f, render_window_->getSize().y / 2.f),
                        sf::Vector2f(render_window_->getSize().x, render_window_->getSize().y)};
         std::shared_ptr<ResourceManager> resource_manager_ = std::make_shared<ResourceManager>();
@@ -27,10 +27,12 @@ namespace Engine
     public:
         Application();
         ~Application();
-        Application(const Application &other) = delete;
-        Application& operator=(Application &other) = delete;
+        Application(const Application& other) = delete;
+        Application operator=(Application& other) = delete;
+        Application(const Application** other) = delete;
+        Application operator=(Application&& other) = delete;
 
-        void Run();
+        void run();
 
     };
 }
