@@ -5,7 +5,7 @@
 
 namespace Engine
 {
-    void ResourceManager::load_cell_tiles()
+    ResourceManager::ResourceManager()
     {
         // TODO: add loading error handling
 

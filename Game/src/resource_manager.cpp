@@ -2,9 +2,16 @@
 
 #include "resource_manager.h"
 
+#include "cell.h"
+
 
 namespace Game
 {
+    ResourceManager::ResourceManager()
+    {
+        load_cell_tiles();
+    }
+	
     void ResourceManager::load_cell_tiles()
     {
         const std::string base_dir = "./res/tiles1/";
@@ -19,15 +26,33 @@ namespace Game
         }
         for (unsigned int i = 0; i < tile_textures_.size(); ++i)
         {
-            tile_sprites[i].setTexture(tile_textures_[i]);
+            const sf::Sprite sprite(tile_textures_[i]);
+            tile_sprites_[texture_paths[i]] = sprite;
         }
+    	
     }
 
-    void ResourceManager::load_json_cells()
+    [[nodiscard]] std::vector<Cell> ResourceManager::get_cells() 
     {
-        std::ifstream i("grid.json");
+        std::ifstream i("../grid.json");
+        if (!i.is_open())
+        {
+            std::cerr << "Cannot open file" << '\n';
+            return std::vector<Cell>();
+        }
         nlohmann::json json;
         i >> json;
-        std::cout << json << '\n';
+
+        std::vector <Cell> cells;
+        for (const auto& json_cell : json)
+        {
+            const auto txt_path = json_cell["txt_path"].get<std::string>();
+            const auto x = json_cell["x"].get<int>();
+            const auto y = json_cell["y"].get<int>();
+            cells.emplace_back(tile_sprites_[txt_path], x, y, tile_textures_[0].getSize().x);
+        }
+        return cells;
     }
+
+    
 }

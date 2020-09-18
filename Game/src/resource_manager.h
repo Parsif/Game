@@ -4,19 +4,24 @@
 
 #include <SFML/Graphics.hpp>
 
+#include "cell.h"
+
 namespace Game
 {
     class ResourceManager
     {
     private:
+        std::map<std::string, sf::Sprite> tile_sprites_;
         std::array<sf::Texture, 10> tile_textures_;
-        std::array<sf::Sprite, 10> tile_sprites;
+
+    private:
+        void load_cell_tiles();
 
     public:
-        void load_cell_tiles();
-        void load_json_cells();
-        [[nodiscard]] inline const auto& get_sprites() const noexcept { return tile_sprites; }
-        [[nodiscard]] inline unsigned int get_tile_size() const noexcept { return tile_textures_[0].getSize().x; }
+        ResourceManager();
+    	
+        [[nodiscard]] std::vector<Cell> get_cells();
+        [[nodiscard]] inline const auto& get_tile_sprite(const std::string &texture_name) noexcept { return tile_sprites_[texture_name]; }
     };
 
 }

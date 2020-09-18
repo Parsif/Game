@@ -21,7 +21,7 @@ namespace Engine
 			json.push_back({{ "txt_path", cell.get_texture_filepath() }, { "x", cell.get_coord().x }, { "y", cell.get_coord().y }});
 		}
 
-		std::ofstream o_stream("grid.json");
+		std::ofstream o_stream("../grid.json");
 		o_stream << json << std::endl;
 	}
 

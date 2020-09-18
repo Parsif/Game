@@ -16,7 +16,7 @@ namespace Engine
         std::array<SpriteWrapper, 10> tile_sprite_wrappers_;
 
     public:
-        void load_cell_tiles();
+        ResourceManager();
         [[nodiscard]] inline const auto& get_sprite_wrappers() const noexcept { return tile_sprite_wrappers_; }
         [[nodiscard]] inline unsigned int get_tile_size() const noexcept { return tile_textures_[0].getSize().x; }
     };

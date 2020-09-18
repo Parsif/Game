@@ -10,11 +10,12 @@ namespace Game
 	private:
 		std::vector<Cell> cells_;
 		unsigned int cell_size_;
+		float scale_x_ = 1.f, scale_y_ = 1.f;
 
 	public:
-		Map();
+		Map(const std::vector<Cell> &cells);
 
-		void draw();
+		void draw(const std::shared_ptr <sf::RenderWindow>& render_window);
 	};
 }
 

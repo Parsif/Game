@@ -7,8 +7,7 @@ namespace Game
 {
 	Application::Application()
 	{
-		resource_manager_->load_cell_tiles();
-		resource_manager_->load_json_cells();
+		map_ = std::make_shared<Map>(resource_manager_->get_cells());
 	}
 
 	Application::~Application()
@@ -20,7 +19,6 @@ namespace Game
 		
 		while (render_window_->isOpen())
 		{
-			render_window_->clear();
 			sf::Event event;
 			while (render_window_->pollEvent(event))
 			{
@@ -29,6 +27,8 @@ namespace Game
 					render_window_->close();
 				}
 			}
+			render_window_->clear();
+			map_->draw(render_window_);
 			render_window_->display();
 		}
 	}

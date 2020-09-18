@@ -11,7 +11,6 @@ namespace Engine
 {
     Application::Application()
     {
-        resource_manager_->load_cell_tiles();
         render_window_->setFramerateLimit(60);
         ImGui::SFML::Init(*render_window_);
         render_window_->setView(view_); 

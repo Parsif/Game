@@ -11,7 +11,7 @@ namespace Game
 		int x_, y_;
 		
 	public:
-		Cell(int x, int y, unsigned int size) noexcept;
+		Cell(const sf::Sprite &sprite, int x, int y, unsigned int size) noexcept;
 		void draw(const std::shared_ptr<sf::RenderWindow>& render_window, float scale_x, float scale_y);
 
 	};
