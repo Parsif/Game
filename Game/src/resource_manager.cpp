@@ -14,20 +14,26 @@ namespace Game
 	
     void ResourceManager::load_cell_tiles()
     {
-        const std::string base_dir = "./res/tiles1/";
-        const std::array<std::string, 10> texture_paths{ base_dir + "tile1.png",base_dir + "tile2.png",base_dir + "tile3.png",
-                                                         base_dir + "tile4.png",base_dir + "tile5.png",base_dir + "tile6.png",
-                                                         base_dir + "tile7.png",base_dir + "tile8.png",base_dir + "tile9.png",
-                                                         base_dir + "tile10.png" };
+        const std::string base_dir = "./res/";
+        const std::array<std::string, 10> tile_texture_paths = { "MapTiles/tile1.png" , "MapTiles/tile2.png", "MapTiles/tile3.png", "MapTiles/tile4.png",
+                                                            "MapTiles/tile5.png", "MapTiles/tile6.png", "MapTiles/tile7.png",
+                                                            "MapTiles/tile8.png", "MapTiles/tile9.png", "MapTiles/tile10.png" };
 
-        for (unsigned int i = 0; i < texture_paths.size(); ++i)
+    	
+        for (unsigned int i = 0; i < tile_texture_paths.size(); ++i)
         {
-            tile_textures_[i].loadFromFile(texture_paths[i]);
-        }
-        for (unsigned int i = 0; i < tile_textures_.size(); ++i)
-        {
+            tile_textures_[i].loadFromFile(base_dir + tile_texture_paths[i]);
             const sf::Sprite sprite(tile_textures_[i]);
-            tile_sprites_[texture_paths[i]] = sprite;
+            tile_sprites_[tile_texture_paths[i]] = sprite;
+        }
+
+        const std::array<std::string, 4> woodcutter_idle_texture_paths = {"Woodcutter/Idle/woodcutter_idle1.png","Woodcutter/Idle/woodcutter_idle2.png",
+        															"Woodcutter/Idle/woodcutter_idle3.png" , "Woodcutter/Idle/woodcutter_idle4.png" };
+
+        for (unsigned int i = 0; i < woodcutter_idle_texture_paths.size(); ++i)
+        {
+            woodcutter_idle_textures_[i].loadFromFile(base_dir + woodcutter_idle_texture_paths[i]);
+            woodcutter_idle_sprites_.emplace_back(woodcutter_idle_textures_[i]);
         }
     	
     }

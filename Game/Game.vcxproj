@@ -45,12 +45,12 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(SolutionDir)Game\bin\$(Configuration)-$(Platform)\</OutDir>
-    <IntDir>$(SolutionDir)Game\bin\$(Configuration)-$(Platform)\</IntDir>
+    <IntDir>$(SolutionDir)Game\bin-int\$(Configuration)-$(Platform)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(SolutionDir)Game\bin\$(Configuration)-$(Platform)\</OutDir>
-    <IntDir>$(SolutionDir)Game\bin\$(Configuration)-$(Platform)\</IntDir>
+    <IntDir>$(SolutionDir)Game\bin-int\$(Configuration)-$(Platform)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -89,6 +89,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\animator.cpp" />
+    <ClCompile Include="src\player.cpp" />
     <ClCompile Include="src\cell.cpp" />
     <ClCompile Include="src\application.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Use</PrecompiledHeader>
@@ -96,6 +98,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Use</PrecompiledHeader>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">pch.h</PrecompiledHeaderFile>
     </ClCompile>
+    <ClCompile Include="src\event_handler.cpp" />
     <ClCompile Include="src\map.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Use</PrecompiledHeader>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">pch.h</PrecompiledHeaderFile>
@@ -112,11 +115,42 @@
     <ClCompile Include="src\resource_manager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\animator.h" />
+    <ClInclude Include="src\player.h" />
     <ClInclude Include="src\cell.h" />
     <ClInclude Include="src\application.h" />
+    <ClInclude Include="src\event_handler.h" />
     <ClInclude Include="src\map.h" />
     <ClInclude Include="src\pch.h" />
     <ClInclude Include="src\resource_manager.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\MapTiles\tile1.png" />
+    <Image Include="res\MapTiles\tile10.png" />
+    <Image Include="res\MapTiles\tile2.png" />
+    <Image Include="res\MapTiles\tile3.png" />
+    <Image Include="res\MapTiles\tile4.png" />
+    <Image Include="res\MapTiles\tile5.png" />
+    <Image Include="res\MapTiles\tile6.png" />
+    <Image Include="res\MapTiles\tile7.png" />
+    <Image Include="res\MapTiles\tile8.png" />
+    <Image Include="res\MapTiles\tile9.png" />
+    <Image Include="res\Woodcutter\Idle\woodcutter_idle1.png" />
+    <Image Include="res\Woodcutter\Idle\woodcutter_idle2.png" />
+    <Image Include="res\Woodcutter\Idle\woodcutter_idle3.png" />
+    <Image Include="res\Woodcutter\Idle\woodcutter_idle4.png" />
+    <Image Include="res\Woodcutter\Run\woodcutter_run1.png" />
+    <Image Include="res\Woodcutter\Run\woodcutter_run2.png" />
+    <Image Include="res\Woodcutter\Run\woodcutter_run3.png" />
+    <Image Include="res\Woodcutter\Run\woodcutter_run4.png" />
+    <Image Include="res\Woodcutter\Run\woodcutter_run5.png" />
+    <Image Include="res\Woodcutter\Run\woodcutter_run6.png" />
+    <Image Include="res\Woodcutter\Walk\woodcutter_walk1.png" />
+    <Image Include="res\Woodcutter\Walk\woodcutter_walk2.png" />
+    <Image Include="res\Woodcutter\Walk\woodcutter_walk3.png" />
+    <Image Include="res\Woodcutter\Walk\woodcutter_walk4.png" />
+    <Image Include="res\Woodcutter\Walk\woodcutter_walk5.png" />
+    <Image Include="res\Woodcutter\Walk\woodcutter_walk6.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

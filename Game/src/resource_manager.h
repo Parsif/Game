@@ -11,8 +11,11 @@ namespace Game
     class ResourceManager
     {
     private:
-        std::map<std::string, sf::Sprite> tile_sprites_;
         std::array<sf::Texture, 10> tile_textures_;
+        std::map<std::string, sf::Sprite> tile_sprites_;
+    	
+        std::array<sf::Texture, 4> woodcutter_idle_textures_;
+        std::vector<sf::Sprite> woodcutter_idle_sprites_;
 
     private:
         void load_cell_tiles();
@@ -21,6 +24,7 @@ namespace Game
         ResourceManager();
     	
         [[nodiscard]] std::vector<Cell> get_cells();
+        [[nodiscard]] inline const auto& get_woodcutter_idle_sprites() const { return woodcutter_idle_sprites_; };
         [[nodiscard]] inline const auto& get_tile_sprite(const std::string &texture_name) noexcept { return tile_sprites_[texture_name]; }
     };
 

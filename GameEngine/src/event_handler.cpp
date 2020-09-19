@@ -84,6 +84,6 @@ namespace Engine
 
 	void EventHandler::on_mouse_scroll() const
 	{
-        grid_->on_mouse_scroll(current_event_.mouseWheelScroll.delta);
+        //grid_->on_mouse_scroll(current_event_.mouseWheelScroll.delta);
 	}
 }
