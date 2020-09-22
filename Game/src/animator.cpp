@@ -26,6 +26,7 @@ namespace Game
 
 	void Animator::reset()
 	{
+		// TODO: fix resetting functionality
 		current_sprite_number_ = 0;
 	}
 

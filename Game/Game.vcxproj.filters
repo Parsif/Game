@@ -68,6 +68,9 @@
     <ClInclude Include="src\animator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\global.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\MapTiles\tile1.png">

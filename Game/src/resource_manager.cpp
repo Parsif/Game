@@ -35,7 +35,17 @@ namespace Game
             woodcutter_idle_textures_[i].loadFromFile(base_dir + woodcutter_idle_texture_paths[i]);
             woodcutter_idle_sprites_.emplace_back(woodcutter_idle_textures_[i]);
         }
-    	
+
+        const std::array<std::string, 6> woodcutter_run_texture_paths = { "Woodcutter/Run/woodcutter_run1.png","Woodcutter/Run/woodcutter_run2.png",
+                                                                   "Woodcutter/Run/woodcutter_run3.png" , "Woodcutter/Run/woodcutter_run4.png",
+        															"Woodcutter/Run/woodcutter_run5.png", "Woodcutter/Run/woodcutter_run6.png" };
+
+        for (unsigned int i = 0; i < woodcutter_run_texture_paths.size(); ++i)
+        {
+            woodcutter_run_textures_[i].loadFromFile(base_dir + woodcutter_run_texture_paths[i]);
+            woodcutter_run_sprites_.emplace_back(woodcutter_run_textures_[i]);
+        }
+
     }
 
     [[nodiscard]] std::vector<Cell> ResourceManager::get_cells() 

@@ -32,7 +32,7 @@ namespace Game
 			
 			render_window_->clear();
 			map_->draw(render_window_);
-			player_.draw(render_window_);
+			player_->draw(render_window_);
 			render_window_->display();
 		}
 	}

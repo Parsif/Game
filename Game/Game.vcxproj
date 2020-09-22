@@ -116,6 +116,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\animator.h" />
+    <ClInclude Include="src\global.h" />
     <ClInclude Include="src\player.h" />
     <ClInclude Include="src\cell.h" />
     <ClInclude Include="src\application.h" />
