@@ -30,24 +30,24 @@ namespace Game
       
     }
 
-	void EventHandler::on_key_pressed()
+	void EventHandler::on_key_pressed() const
 	{
 		switch (current_event_.key.code)
 		{
         case sf::Keyboard::Left:
-            player_->move(Direction::Left);
+            player_->set_move_direction(Direction::Left);
             break;
 
         case sf::Keyboard::Right:
-            player_->move(Direction::Right);
+            player_->set_move_direction(Direction::Right);
             break;
 
         case sf::Keyboard::Up:
-            player_->move(Direction::Up);
+            player_->set_move_direction(Direction::Up);
             break;
 
         case sf::Keyboard::Down:
-            player_->move(Direction::Down);
+            player_->set_move_direction(Direction::Down);
             break;
 
         default:
@@ -55,9 +55,9 @@ namespace Game
 		}
 	}
 
-	void EventHandler::on_key_released()
+	void EventHandler::on_key_released() const
 	{
-        player_->idle();
+        player_->set_move_direction(Direction::None);
 	}
 
 	void EventHandler::on_window_close() const

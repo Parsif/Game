@@ -22,8 +22,8 @@ namespace Game
     	
     private:
         void on_mouse_click() const;
-        void on_key_pressed();
-        void on_key_released();
+        void on_key_pressed() const;
+        void on_key_released() const;
         void on_window_close() const;
         void on_window_resize();
 	

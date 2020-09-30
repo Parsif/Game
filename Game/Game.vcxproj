@@ -89,6 +89,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\camera.cpp" />
     <ClCompile Include="src\animator.cpp" />
     <ClCompile Include="src\player.cpp" />
     <ClCompile Include="src\cell.cpp" />
@@ -115,6 +116,7 @@
     <ClCompile Include="src\resource_manager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\camera.h" />
     <ClInclude Include="src\animator.h" />
     <ClInclude Include="src\global.h" />
     <ClInclude Include="src\player.h" />
